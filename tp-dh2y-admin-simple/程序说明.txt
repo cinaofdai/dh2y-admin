@@ -1,0 +1,8 @@
+解梦域名：http://www.kuaichale.me
+
+后台管理地址：http://www.kuaichale.me/admin.php
+账户：admin
+密码  admin
+
+
+数据库在当前文件夹  kuaichale.sql

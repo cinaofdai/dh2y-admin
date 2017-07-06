@@ -1,0 +1,89 @@
+<extend name="Public/Layout/index"/>
+<block name="main">
+    <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="#">主页</a>
+                </li>
+
+                <li>
+                    <a href="#">管理组管理</a>
+                </li>
+                <li class="active">选择规则</li>
+            </ul><!-- .breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="icon-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- #nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    管理组管理
+                    <small>
+                        <i class="icon-double-angle-right"></i>
+                    选择规则
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+
+                    <form class="form-horizontal" action='__ACTION__' role="form" method='post' >
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" id="username" name="title" for="form-field-1"> 管理组名称 </label>
+
+                            <div class="col-sm-9">
+                                <input type="text" class="col-xs-10 col-sm-5"  name='title' />     
+                            </div>
+                            
+                        </div>
+
+                        <!-- <div class="space-4"></div>
+                         -->
+                        <label class="col-sm-3 control-label no-padding-right" name="url" for="form-field-2"> 选择规则 </label>
+                        <div class="col-sm-9">
+                        <foreach name='rules' item='rule'>
+                            <input type="checkbox" name="rules[]"  value="{$rule['id']}"/>{$rule['title']}&nbsp;    
+                        </foreach> 
+                        </div>
+<!-- 
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" name="url" for="form-field-2"> 选择规则 </label>
+
+                            <div class="col-sm-9">
+                                <foreach name='rules' item='rule'>
+                                    <input type="checkbox" name='rules'  value="$rule['id']" class="col-xs-10 col-sm-5" />{$rule['title']}&nbsp;
+                                </foreach> 
+                            </div>
+                        </div> -->
+
+                        <div class="space-4"></div>
+                        <input type='submit' name='sub' class="btn btn-info" value='添加'  style="margin-left:300px;margin-top:100px" />
+                            <!-- <input type="checkbox[]" name='rules'  value="$rule['id']" class="col-xs-10 col-sm-5" />{$rule['status'] =1 ? "启用" : "禁用" }&nbsp; -->
+                       <!--  <div class="clearfix form-actions">
+                           <div class="col-md-offset-3 col-md-9">
+                              <input type='submit' name='sub' class="btn btn-info" value='添加'/>
+                       
+                           </div>
+                       </div> -->
+                    </form>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</block>

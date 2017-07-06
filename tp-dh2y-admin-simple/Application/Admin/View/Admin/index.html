@@ -1,0 +1,133 @@
+<extend name='Public/Layout/index'/>
+<block name='main'>
+<div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="__APP__">主页</a>
+                </li>
+
+                <li>
+                    <a href="#">管理管理员</a>
+                </li>
+                <li class="active">管理员列表</li>
+            </ul><!-- .breadcrumb -->
+        </div>
+        
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    管理管理员
+                    <small>
+                        <i class="icon-double-angle-right"></i>
+                        管理员列表
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="table-responsive">
+                                <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                        <form action="__CONTROLLER__/del" method="POST">
+                                            <th>管理员ID</th>
+                                            <th>管理员名称</th>
+                                            <th>
+                                                最后登录时间
+                                            </th>
+                                            <th>
+                                                管理员状态
+                                            </th>
+                                            <th>
+                                                操作
+                                            </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    
+                                    <foreach name='data' item='admin'>
+                                        <tr>
+                                            <td>
+                                                {$admin.admin_id}
+                                            </td>
+                                            <td>{$admin.name}</td>
+                                            <td class="hidden-480">{$admin['ctime']|date='Y-m-d H:i:s',###}</td>
+                                            <td>{$admin['status']=='0'?"禁用":"启用"}</td>
+                                            <td>
+                                                <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+                                                    <a href='__CONTROLLER__/del/id/{$admin.admin_id}'>
+                                                        删除 |
+                                                    </a>
+                                    
+                                                    <a href='__CONTROLLER__/update/id/{$admin.admin_id}' >
+                                                        {$admin['status']=='1'?"禁用":"启用"} |
+                                                    </a>
+
+                                                    <a href='__CONTROLLER__/addGroup/id/{$admin.admin_id}'>
+                                                        修改管理组 
+                                                    </a>
+                                                </div>
+
+                                                <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                                    <div class="inline position-relative">
+                                                        <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                            <i class="icon-cog icon-only bigger-110"></i>
+                                                        </button>
+
+                                                        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
+                                                            <li>
+                                                                <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
+                                                                    <span class="blue">
+                                                                        <i class="icon-zoom-in bigger-120"></i>
+                                                                    </span>
+                                                                </a>
+                                                            </li>
+
+                                                            <li>
+                                                                <a href="__CONTROLLER__/mod/id/{$admin.admin_id}" class="tooltip-success" data-rel="tooltip" title="Edit">
+                                                                    <span class="green">
+                                                                        <i class="icon-edit bigger-120"></i>
+                                                                    </span>
+                                                                </a>
+                                                            </li>
+
+                                                            <li>
+                                                                <a href="__CONTROLLER__/del/id/{$admin.admin_id}" class="tooltip-error" data-rel="tooltip" title="Delete">
+                                                                    <span class="red">
+                                                                        <i class="icon-trash bigger-120"></i>
+                                                                    </span>
+                                                                </a>
+                                                            </li>
+
+                                                            <li>
+                                                                <a href="__CONTROLLER__/addGroup/id/{$admin.admin_id}" class="tooltip-error" data-rel="tooltip" title="Delete" value="修改管理组">
+                                                                    <span class="red">
+                                                                        <i class="icon-trash bigger-120"></i>
+                                                                    </span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </foreach> 
+                                    </form>
+                                    </tbody>
+                                </table>
+                            </div><!-- /.table-responsive -->
+                        </div><!-- /span -->
+                    </div><!-- /row -->
+                    <div class="hr hr-18 dotted hr-double"></div>
+                    <div class="hr hr-18 dotted hr-double"></div>
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div><!-- /.main-content -->
+</block>

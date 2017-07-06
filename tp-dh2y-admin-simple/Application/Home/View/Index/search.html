@@ -1,0 +1,72 @@
+<extend name="Public:Master/index"/>
+<block name="main">
+    <div class="phone_left">
+        <div class="zhougong_bor">
+            <h1>周公解梦</h1>
+            <p class="zhougong_p1">在线解梦、梦中凶吉预测</p>
+            <div class="zhougong_shur">
+                <form method="post" action="__CONTROLLER__/search" id="form1">
+                    <input type="text" name="dr" id="text_search" class="zhougong_sousuotxt"
+                           onblur="if(this.value=='') {this.value='请输入做梦内容的关键字，如“女人”';this.style.color='#343235';}"
+                           onfocus="if(this.value=='请输入做梦内容的关键字，如“女人”') {this.value='';this.style.color='#343235';}"
+                           value="请输入做梦内容的关键字，如“女人”">
+                    <input type="submit" class="zhougong_but" value="">
+                </form>
+            </div>
+            <div class="zhougong_line"></div>
+            <if  condition="$result neq 'NULL'">
+                    <div class="zhougong5_c">
+                        对不起，没有找到<strong>"{$search}"</strong>相关结果
+                    </div>
+                <else />
+                    <h3 class="zhougong4_h3">与”{$search}“有关的周公解梦</h3>
+                    <div style="margin-top:18px;" class="zhougong_fenxiang">
+                        <!-- Baidu Button BEGIN -->
+                        <div class="bdshare_t bds_tools get-codes-bdshare" id="bdshare">
+                            <span class="bds_more">分享到：</span>
+                            <a class="bds_qzone" title="分享到QQ空间" href="#"></a>
+                            <a class="bds_tsina" title="分享到新浪微博" href="#"></a>
+                            <a class="bds_tqq" title="分享到腾讯微博" href="#"></a>
+                            <a class="bds_renren" title="分享到人人网" href="#"></a>
+                        </div>
+                        <script data="type=tools&amp;uid=6572336" id="bdshare_js" type="text/javascript" src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=408203"></script>
+
+                        <script type="text/javascript">
+                            document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+                        </script>
+                        <!-- Baidu Button END -->
+                        <script src="http://bdimg.share.baidu.com/static/js/logger.js?cdnversion=408203"></script></div>
+                    <div class="zhougong3_c">
+                        <ul id="search_list" class="dream_rlist">
+                            <php>$i=0;</php>
+                            <foreach name="result" item="item">
+                                <li>
+                                    <h6 onclick="detail('{$i}','{$count}')">梦见<span class="cRed">{$item['dream_thing']}</span></h6>
+                                    <div class="dream_rtxt" id="show{$i}" style="">
+                                        <p>{$item['explain']}
+                                            <a href="__CONTROLLER__/contentDetail/id/{$item['id']}" target="_blank">...[详情]</a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <php>$i++;</php>
+                            </foreach>
+                        </ul>
+                    </div>
+            </if>
+            <h4 class="zhougong3_h4">你是否还梦见？</h4>
+            <div class="zhougong3_more">
+                <foreach name='other' item='item'>
+                    <a href="__CONTROLLER__/contentDetail/id/{$item['id']}">{$item['dream_thing']}</a>
+                </foreach>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+       /* function detail(id,count){
+            alert(id+"--"+count);
+
+            $("#show"+id)[id].style.display='block';
+
+        }*/
+    </script>
+</block>
