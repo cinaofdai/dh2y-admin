@@ -1,8 +1,8 @@
-½âÃÎÓòÃû£ºhttp://www.kuaichale.me
+åŸŸåï¼šhttp://www.dh2y.me
 
-ºóÌ¨¹ÜÀíµØÖ·£ºhttp://www.kuaichale.me/admin.php
-ÕË»§£ºadmin
-ÃÜÂë  admin
+åå°ç®¡ç†åœ°å€ï¼šhttp://www.dh2y.me/admin.php
+è´¦æˆ·ï¼šadmin
+å¯†ç   admin
 
 
-Êı¾İ¿âÔÚµ±Ç°ÎÄ¼ş¼Ğ  kuaichale.sql
+æ•°æ®åº“åœ¨å½“å‰æ–‡ä»¶å¤¹  kuaichale.sql

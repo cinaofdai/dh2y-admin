@@ -1,6 +1,6 @@
 ﻿## 简介
 
-tp3.2-dh2y-admin  ThinkPHP(vue.js)vue.js内嵌结合版本
+tp-dh2y-admin-3.2  ThinkPHP(vue.js)vue.js内嵌结合版本
 
 
 这样的版本主要利用后台开发人员不懂前端项目开发，只用到了数据绑定功能。
