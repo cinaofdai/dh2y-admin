@@ -19,7 +19,7 @@ class BuildController extends CommonController
      */
     public function index(){
         if ($_POST) {
-           $url = $_POST['url'];
+            $url = $_POST['url'];
             $build = new BuildHtml();
             $build->group='gcld';
             $build->dirType = 'day';

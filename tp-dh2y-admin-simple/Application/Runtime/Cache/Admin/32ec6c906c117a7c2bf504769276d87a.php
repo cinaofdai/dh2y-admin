@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -9,8 +9,8 @@
 
 		<!-- basic styles -->
 
-		<link rel="stylesheet" href="__PUBLIC__/admin/assets/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="__PUBLIC__/admin/assets/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="/Public/admin/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/Public/admin/assets/css/font-awesome.min.css" />
 
 		<!--[if IE 7]>
 		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
@@ -20,12 +20,12 @@
 
 		<!-- fonts -->
 
-		<link rel="stylesheet" href="__PUBLIC__/admin/assets/css/font-Open-Sans.css" />
+		<link rel="stylesheet" href="/Public/admin/assets/css/font-Open-Sans.css" />
 
 		<!-- ace styles -->
 
-		<link rel="stylesheet" href="__PUBLIC__/admin/assets/css/ace.min.css" />
-		<link rel="stylesheet" href="__PUBLIC__/admin/assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="/Public/admin/assets/css/ace.min.css" />
+		<link rel="stylesheet" href="/Public/admin/assets/css/ace-rtl.min.css" />
 
 		<!--[if lte IE 8]>
 		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
@@ -69,7 +69,7 @@
 
 											<div class="space-6"></div>
 
-											<form id='forms' name='forms' action='__CONTROLLER__/login' method='post'>
+											<form id='forms' name='forms' action='/admin.php/Login/login' method='post'>
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
@@ -88,7 +88,7 @@
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<input type="text" class="form-control" placeholder="输入验证码" style="width:120px;float:left;" name='code'/>
-															<img src='__CONTROLLER__/code' style='float:left;margin-left:150px;height:35px;margin-top:-32px' onclick="this.src='__CONTROLLER__/code?'+ Math.random(0,1)"/>
+															<img src='/admin.php/Login/code' style='float:left;margin-left:150px;height:35px;margin-top:-32px' onclick="this.src='/admin.php/Login/code?'+ Math.random(0,1)"/>
 														</span>
 													</label>
 
@@ -122,7 +122,7 @@
 
 		<!--[if !IE]> -->
 
-		<script src="__PUBLIC__/admin/assets/js/jquery-2.0.3.min.js"></script>
+		<script src="/Public/admin/assets/js/jquery-2.0.3.min.js"></script>
 
 		<!-- <![endif]-->
 
@@ -133,7 +133,7 @@
 		<!--[if !IE]> -->
 
 		<script type="text/javascript">
-			window.jQuery || document.write("<script src='__PUBLIC__/admin/assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+			window.jQuery || document.write("<script src='/Public/admin/assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
 		</script>
 
 		<!-- <![endif]-->
@@ -145,7 +145,7 @@
 <![endif]-->
 
 		<script type="text/javascript">
-			if("ontouchend" in document) document.write("<script src='__PUBLIC__/admin/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+			if("ontouchend" in document) document.write("<script src='/Public/admin/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
 
 		<!-- inline scripts related to this page -->

