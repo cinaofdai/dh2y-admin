@@ -1,8 +1,0 @@
-域名：http://www.dh2y.me
-
-后台管理地址：http://www.dh2y.me/admin.php
-账户：admin
-密码  admin
-
-
-数据库在当前文件夹  kuaichale.sql

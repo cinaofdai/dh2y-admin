@@ -13,4 +13,12 @@ tp-dh2y-admin-simple  ThinkPHP版本
 
 *  导入DataBase里面的最新sql文件或者在项目根目录
 
-## 安装效果图
+域名：http://www.dh2y.me
+
+后台管理地址：http://www.dh2y.me/admin.php
+账户：admin
+密码  admin
+
+
+数据库在DataBase  下面请使用最新的sql文件
+
