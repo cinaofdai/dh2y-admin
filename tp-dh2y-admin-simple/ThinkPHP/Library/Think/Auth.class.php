@@ -75,7 +75,8 @@ class Auth{
         'AUTH_GROUP'        => 'auth_group',        // 用户组数据表名
         'AUTH_GROUP_ACCESS' => 'auth_group_access', // 用户-用户组关系表
         'AUTH_RULE'         => 'auth_rule',         // 权限规则表
-        'AUTH_USER'         => 'admin'             // 用户信息表
+        'AUTH_USER'         => 'admin',             // 用户信息表
+        'AUTH_MENU'         => 'menu'               // 菜单表
     );
 
     public function __construct() {
@@ -84,6 +85,7 @@ class Auth{
         $this->_config['AUTH_RULE'] = $prefix.$this->_config['AUTH_RULE'];
         $this->_config['AUTH_USER'] = $prefix.$this->_config['AUTH_USER'];
         $this->_config['AUTH_GROUP_ACCESS'] = $prefix.$this->_config['AUTH_GROUP_ACCESS'];
+        $this->_config['AUTH_MENU'] = $prefix.$this->_config['AUTH_MENU'];
         if (C('AUTH_CONFIG')) {
             //可设置配置项 AUTH_CONFIG, 此配置项为数组。
             $this->_config = array_merge($this->_config, C('AUTH_CONFIG'));
@@ -226,6 +228,92 @@ class Auth{
              $userinfo[$uid]=M()->where(array('admin_id'=>$uid))->table($this->_config['AUTH_USER'])->find();
         }
         return $userinfo[$uid];
+    }
+
+
+    public function menu($uid){
+        if(session('MENU_LIST')){
+            return session('MENU_LIST');
+        }
+
+        $authList = $this->getAuthList($uid,1);
+        $menu = M()->table($this->_config['AUTH_MENU'])->select();
+        $keys = array_column($menu,'id');
+        $menu = array_combine($keys,$menu);
+
+        //返回有权限的菜单
+        $menuList = []; $pids = [];
+        foreach($menu as $key=>$value){
+            if(in_array($value['link'],$authList)){
+                if($value['pid']!=0){
+                    if(!in_array($value['pid'],$pids)){
+                        $menuList[] = $menu[$value['pid']];
+                        $pids[] = $value['pid'];
+                    }
+                }
+                $menuList[] =  $value;
+            }
+        }
+
+        session('MENU_LIST',$menuList);
+        return $menuList;
+    }
+
+    /**
+     * 生成菜单
+     * @param $data
+     * @param int $pid
+     * @param string $fieldPri
+     * @param string $fieldPid
+     * @return bool|string
+     */
+    public function buildMenu($data, $pid = 0, $fieldPri = 'id', $fieldPid = 'pid'){
+        if (empty($data)) {
+            return false;
+        }
+        $arr ="";
+        $do =  session('menuList');
+        foreach ($data as $v) {
+            if ($v[$fieldPid] == $pid) {
+
+                $son = self::buildMenu($data,$v[$fieldPri], $fieldPri, $fieldPid);
+
+                //活跃标签
+                $active =($do['p']==$v[$fieldPri])?'class="active open"':'';
+                $active =($do['s']==$v[$fieldPri])?'class="active"':$active;
+
+                $arr .= '<li '.$active.'><a '.($son?'class="dropdown-toggle"':'').' href="'.($v['link']!=''?U($v['link']):'#').'">';
+                if($v['icon']!=''){
+                    $arr .= '<i class="'.$v['icon'].'"></i>';
+                }else{
+                    $arr .= '<i class="icon-double-angle-right"></i>';
+                }
+                $arr .= ('<span class="menu-text">'.$v['title'].'</span>').($son?'<b class="arrow icon-angle-down"></b>':'').'</a>';
+
+                //子菜单
+                if($son){
+                    $arr .= '<ul class="submenu">'.$son.'</ul>';
+                }
+                $arr .= '</li>';
+
+            }
+        }
+        return $arr;
+    }
+
+    /**
+     * 设置活跃菜单
+     * @param $data
+     * @param string $link
+     * @param string $fieldPri
+     * @param string $fieldPid
+     */
+    public function menuActive($data,$link='', $fieldPri = 'id', $fieldPid = 'pid'){
+        foreach ($data as $v) {
+            if(strtolower($v['link'])==strtolower($link)){
+                session('menuList',['s'=>$v[$fieldPri],'p'=>$v[$fieldPid]]);
+            }
+        }
     }
 
 }

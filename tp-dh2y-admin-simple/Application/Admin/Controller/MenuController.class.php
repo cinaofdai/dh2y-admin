@@ -30,6 +30,7 @@ class MenuController extends CommonController
         $rule = M("menu");
         $id = I("id");
         if($rule -> delete($id)){
+            session('MENU_LIST',null);
             $this -> success("删除菜单成功！");
         }else{
             $this -> error("删除菜单失败!");
@@ -45,6 +46,7 @@ class MenuController extends CommonController
             $_POST['link'] = trim($_POST['link']);
             if ($rule->create()) {
                 if ($rule->add()) {
+                    session('MENU_LIST',null);
                     $this->redirect("menu/index");
                 } else {
                     $this->error('添加菜单失败！');
@@ -66,6 +68,7 @@ class MenuController extends CommonController
             $_POST['link'] = trim($_POST['link']);
             if($model->create()) {
                 if($model->save()) {
+                    session('MENU_LIST',null);
                     $this->redirect("menu/index");
                 }else{
                     $this->error("修改菜单失败");

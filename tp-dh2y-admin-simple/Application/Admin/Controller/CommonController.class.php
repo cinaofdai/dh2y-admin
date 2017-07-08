@@ -13,6 +13,11 @@ class CommonController extends Controller
         $auth = new \Think\Auth();
         $adminId = $_SESSION['admin']['admin_id'];
 
+        $menuList = $auth->menu($adminId);
+       // dump($menuList);die;
+        $auth->menuActive($menuList,$rule);
+        //dump($auth->buildMenu($menuList));die;
+        $this->assign('menuBar',$auth->buildMenu($menuList));
         if (!$auth->check($rule,$adminId)) {
             if(isset($_SESSION['admin']['admin_id'])){
                 $this->error("你没有权限");
