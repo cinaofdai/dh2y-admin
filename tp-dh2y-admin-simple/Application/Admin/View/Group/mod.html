@@ -45,18 +45,18 @@
 
                     <form class="form-horizontal" action='__ACTION__' role="form" method='post' >
                         <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right" id="title" name="title" for="form-field-1"> 管理组名 </label>
+                            <label class="col-sm-3 control-label no-padding-right" id="title" name="title"> 管理组名 </label>
 
                             <div class="col-sm-9">
                                 <input type="text" class="col-xs-10 col-sm-5"  name='title' value="{$group['title']}" />     
                             </div>  
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right" name="status" for="form-field-2"> 选择规则 </label>
+                            <label class="col-sm-3 control-label no-padding-right" name="status"> 选择规则 </label>
 
                             <div class="col-sm-9">
                                 <foreach name='rules' item='rule'>
-                                    <input type="checkbox" name='rules[]'  value="{$rule['id']}"/>{$rule['title']}&nbsp;
+                                    <input type="checkbox" name='rules[]' <in name="rule.id" value="$group['rules']">checked="checked"</in> value="{$rule['id']}"/>{$rule['title']}&nbsp;
                                 </foreach> 
                             </div>
                         </div> 
