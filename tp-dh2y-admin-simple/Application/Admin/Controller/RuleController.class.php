@@ -24,6 +24,7 @@ class RuleController extends CommonController
     {
         if ($_POST) {
             $rule = M('auth_rule');
+            $_POST['name'] = trim($_POST['name']);
             if ($rule->create()) {
                 if ($rule->add()) {
                     $this->redirect("Rule/index");
@@ -42,7 +43,7 @@ class RuleController extends CommonController
         $rule = M('auth_rule');
         if($_POST['sub'])
             {
-     
+                $_POST['name'] = trim($_POST['name']);
                 if($rule->create())
                 {
                     if($rule->save())

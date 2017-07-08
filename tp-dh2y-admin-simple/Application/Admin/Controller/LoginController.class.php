@@ -48,7 +48,7 @@ class LoginController extends Controller
                 $this->error('用户名或密码错！');
             } else{
                 $_SESSION['admin'] = $res;
-                $_SEESION['admin']['isLogin'] = 1;
+                $_SESSION['admin']['isLogin'] = 1;
                 unset($_SESSION['admin']['password']);
                 $this -> redirect("Index/index");
             }
