@@ -1,7 +1,9 @@
 <?php
 namespace Admin\Controller;
 
-class RuleController extends CommonController 
+use Think\Page;
+
+class RuleController extends CommonController
 {  
     /**
     *index()显示规则列表
@@ -9,9 +11,12 @@ class RuleController extends CommonController
     public function index()
     {
         $rule = M('auth_rule');
-        // dump($rule);
-        $rules = $rule ->select();
-        //var_dump($rules);
+
+        $count = $rule->count();// 查询满足要求的总记录数 $map表示查询条件
+        $Page = new Page($count,15);// 实例化分页类 传入总记录数
+        $rules = $rule->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('page', $Page->show());// 赋值分页输出
+
         $this->assign('rules',$rules);
         $this->display();
     }

@@ -19,7 +19,9 @@ class CommonController extends Controller
             }else{
                 $this->error("请先登录",U("Login/index"));
             }
-        }
+
+
+     }
     }
 }
 ?>
