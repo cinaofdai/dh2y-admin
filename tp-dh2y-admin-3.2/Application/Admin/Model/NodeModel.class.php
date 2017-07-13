@@ -21,7 +21,7 @@ class NodeModel extends BaseModel
     protected $_validate = array(
         ['name','require','节点必须！'],
         ['title','require','节点中文名必须！'],
-        ['name','/^[A-Za-z0-9]+$/','老铁！只能是英文数字'],
+        ['name','/^[A-Za-z0-9_]+$/','老铁！只能是英文数字下划线'],
         ['pid','/^[1-9]\d*$/','父节点整形'],
         ['sort','/^[0-9]\d*$/','排序序号整形'],
         ['level',[2,3],'节点类型错误！',2,'in'],//状态,1开启，0关闭

@@ -35,6 +35,14 @@ class AdminController extends BaseController
             $this->error('您没有权限');
         }
     }
+	
+	/**
+     * 设置面包屑头部
+     */
+    public function breadcrumbs($breadcrumbs){
+        $this->assign('breadcrumbs',$breadcrumbs);
+    }
+	
     /**
      * 万能搜索
      * @param Model $model 模型
