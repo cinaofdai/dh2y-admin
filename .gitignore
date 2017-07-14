@@ -1,2 +1,6 @@
+.idea
 /tp-dh2y-admin-3.2/Runtime
 /tp-dh2y-admin-simple/Application/Runtime
+/yii2-dh2y-admin-basic/runtime
+/yii2-dh2y-admin-basic/vendor
+/yii2-dh2y-admin-basic/composer.phar
