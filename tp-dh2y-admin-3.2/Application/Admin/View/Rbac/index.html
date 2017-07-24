@@ -146,6 +146,7 @@
      * 添加节点
      */
     function addFunction(level,pid) {
+        $('.node_input_id').val('');
         showNode(level,pid,function (form_id) {
             $('#'+form_id+' .subBtn').on('click',function () {
                 util.submit('#'+form_id+' #node_form',function (data) {
