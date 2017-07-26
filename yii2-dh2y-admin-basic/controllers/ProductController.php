@@ -14,7 +14,7 @@ use yii\web\Controller;
 class ProductController extends Controller
 {
 
-    public $layout = false;
+    public $layout = 'layout';
 
     /**
      * 商品列表页

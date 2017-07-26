@@ -14,7 +14,7 @@ use yii\web\Controller;
 class CartController extends Controller
 {
 
-    public $layout = false;
+    public $layout = 'layout';
 
     public function actionIndex(){
 

@@ -13,7 +13,7 @@ use yii\web\Controller;
 
 class OrderController extends Controller
 {
-    public $layout = false;
+    public $layout = 'layout';
 
     /**
      * 订单中心
