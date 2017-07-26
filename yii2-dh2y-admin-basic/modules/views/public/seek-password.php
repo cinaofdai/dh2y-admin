@@ -1,6 +1,6 @@
 <?php
- use yii\bootstrap\ActiveForm;
- use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
 ?>
 <!DOCTYPE html>
 <html class="login-bg">
@@ -41,15 +41,11 @@
     ]) ?>
     <div class="span4 box">
         <div class="content-wrap">
-            <h6>dh2y商城 - 后台管理</h6>
+            <h6>dh2y商城 - 找回密码</h6>
             <?= $form->field($model,'username')->textInput(['class'=>'span12','placeholder'=>'管理员账号']) ?>
-            <?= $form->field($model,'adminpass')->passwordInput(['class'=>'span12','placeholder'=>'管理员密码']) ?>
-            <a href="<?=\yii\helpers\Url::to(['public/seek-password'])?>" class="forgot">忘记密码?</a>
-            <?= $form->field($model,'rememberMe')->checkbox([
-                'id'=>'remember-me',
-                'template'=>' <div class="remember">{input}<label for="remember-me">记住我</label></div>'
-            ])?>
-            <?= Html::submitButton('登录',['class'=>'btn-glow primary login'])?>
+            <?= $form->field($model,'email')->textInput(['class'=>'span12','placeholder'=>'管理员邮箱']) ?>
+            <a href="<?=\yii\helpers\Url::to(['public/login'])?>" class="forgot">登录</a>
+            <?= Html::submitButton('找回',['class'=>'btn-glow primary login'])?>
         </div>
     </div>
     <?php ActiveForm::end() ?>
