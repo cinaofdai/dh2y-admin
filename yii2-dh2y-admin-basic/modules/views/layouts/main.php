@@ -1,3 +1,6 @@
+<?php
+ use yii\helpers\Url;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -141,7 +144,7 @@
                 </a>
             </li>
             <li class="settings hidden-phone">
-                <a href="<?=\yii\helpers\Url::to(['public/logout'])?>" role="button">
+                <a href="<?=Url::to(['public/logout'])?>" role="button">
                     <i class="icon-share-alt"></i>
                 </a>
             </li>
@@ -168,6 +171,17 @@
                 <i class="icon-signal"></i>
                 <span>统计</span>
             </a>
+        </li>
+        <li>
+            <a class="dropdown-toggle" href="#">
+                <i class="icon-group"></i>
+                <span>管理员管理</span>
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+                <li><a href="<?=Url::to(['manage/managers'])?>">管理员列表</a></li>
+                <li><a href="<?=Url::to(['manage/reg'])?>">加入新管理员</a></li>
+            </ul>
         </li>
         <li>
             <a class="dropdown-toggle" href="#">

@@ -11,9 +11,16 @@ namespace app\modules\controllers;
 use app\modules\models\Admin;
 use yii;
 use yii\web\Controller;
+use yii\data\Pagination;
 
 class ManageController extends Controller
 {
+
+    /**
+     * 通过邮件找回密码
+     * @return string
+     * @throws yii\base\ExitException
+     */
     public function actionMailChangePass(){
         $this->layout = false;
 
@@ -40,6 +47,26 @@ class ManageController extends Controller
         $model->username = $username;
         return $this->render('mail-change-pass',[
             'model' =>$model
+        ]);
+    }
+
+
+    /**
+     * 管理员列表
+     * @return string
+     */
+    public function actionManagers(){
+
+        $model = Admin::find();
+
+        $count = $model->count();
+        $pageSize = Yii::$app->params['pageSize']['manage'];
+        $pager = new Pagination(['totalCount'=>$count,'pageSize'=>$pageSize]);
+
+        $managers = $model->offset($pager->offset)->limit($pager->limit)->all();
+        return $this->render('managers',[
+            'managers'=>$managers,
+            'pager' => $pager
         ]);
     }
 }
