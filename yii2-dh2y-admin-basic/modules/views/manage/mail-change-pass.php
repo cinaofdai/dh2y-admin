@@ -1,6 +1,6 @@
 <?php
-use yii\bootstrap\ActiveForm;
-use yii\helpers\Html;
+ use yii\bootstrap\ActiveForm;
+ use yii\helpers\Html;
 ?>
 <!DOCTYPE html>
 <html class="login-bg">
@@ -41,14 +41,15 @@ use yii\helpers\Html;
     ]) ?>
     <div class="span4 box">
         <div class="content-wrap">
-            <h6>dh2y商城 - 找回密码</h6>
             <?php if(Yii::$app->session->hasFlash('info')){
                 echo Yii::$app->session->getFlash('info');
             }?>
-            <?= $form->field($model,'username')->textInput(['class'=>'span12','placeholder'=>'管理员账号']) ?>
-            <?= $form->field($model,'email')->textInput(['class'=>'span12','placeholder'=>'管理员邮箱']) ?>
-            <a href="<?=\yii\helpers\Url::to(['public/login'])?>" class="forgot">登录</a>
-            <?= Html::submitButton('找回',['class'=>'btn-glow primary login'])?>
+            <h6>dh2y商城 - 修改密码</h6>
+            <?= $form->field($model,'username')->hiddenInput() ?>
+            <?= $form->field($model,'adminpass')->passwordInput(['class'=>'span12','placeholder'=>'新用户密码']) ?>
+            <?= $form->field($model,'repass')->passwordInput(['class'=>'span12','placeholder'=>'确认密码']) ?>
+            <a href="<?=\yii\helpers\Url::to(['public/login'])?>" class="forgot">返回登录?</a>
+            <?= Html::submitButton('修改',['class'=>'btn-glow primary login'])?>
         </div>
     </div>
     <?php ActiveForm::end() ?>

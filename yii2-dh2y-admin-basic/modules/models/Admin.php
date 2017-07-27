@@ -20,6 +20,8 @@ class Admin extends ActiveRecord
 {
 
     public $rememberMe = true;
+
+    public $repass;
     /**
      * @inheritdoc
      */
@@ -31,13 +33,15 @@ class Admin extends ActiveRecord
     public function rules()
     {
         return [
-            ['username','required','message'=>'管理员账号不能为空','on'=>['login','seekPass']],
-            ['adminpass','required','message'=>'管理员密码不能为空','on'=>['login']],
+            ['username','required','message'=>'管理员账号不能为空','on'=>['login','seekPass','changePass']],
+            ['adminpass','required','message'=>'管理员密码不能为空','on'=>['login','changePass']],
             ['rememberMe','boolean','on'=>['login']],
             ['adminpass','validatePass','on'=>['login']],
             ['email','required','message'=>'电子邮箱不能为空','on'=>['seekPass']],
             ['email','email','message'=>'电子邮箱格式错误','on'=>['seekPass']],
             ['email','validateEmail','on'=>['seekPass']],
+            ['repass','required','message'=>'确认密码不能为空','on'=>['changePass']],
+            ['repass','compare','compareAttribute'=>'adminpass','message'=>'两次密码不一致','on'=>['changePass']],
 
         ];
     }
@@ -47,7 +51,7 @@ class Admin extends ActiveRecord
      */
     public function validatePass(){
         if(!$this->hasErrors()){
-            $condition = ['username' =>$this->username,'adminpass'=>$this->adminpass];
+            $condition = ['username' =>$this->username,'adminpass'=>md5($this->adminpass)];
             $data = self::find()->where($condition)->one();
             if(is_null($data)){
                 $this->addError('adminpass','用户名称或密码错误');
@@ -63,7 +67,7 @@ class Admin extends ActiveRecord
             $condition = ['username' =>$this->username,'email'=>$this->email];
             $data = self::find()->where($condition)->one();
             if(is_null($data)){
-                $this->addError('adminpass','管理员账号不匹配');
+                $this->addError('email','管理员邮箱不匹配');
             }
         }
     }
@@ -74,7 +78,7 @@ class Admin extends ActiveRecord
      * @return bool
      */
     public function login($data){
-
+        $this->scenario = 'login';
         if($this->load($data)&&$this->validate()){
             //登录操作
             $lifetime = $this->rememberMe?24*3600:0;
@@ -100,9 +104,46 @@ class Admin extends ActiveRecord
     public function seekPass($data){
         $this->scenario = 'seekPass';
         if($this->load($data)&&$this->validate()){
-            
+            $time = time();
+            $token = $this->createToken($this->username,$time);
+
+            $mailer = Yii::$app->mailer->compose('seekpass',[
+                'username'=>$this->username,
+                'time' =>$time,
+                'token' => $token
+            ]);
+            $mailer->setFrom('913992589@qq.com');
+            $mailer->setTo($this->email);
+            $mailer->setSubject('dh2y-商城demo，找回密码');
+            if($mailer->send()){
+                return true;
+            }
         }
         return false;
     }
 
+    /**
+     * 修改密码
+     * @param $data
+     * @return bool
+     */
+    public function changePass($data){
+        $this->scenario = 'changePass';
+        if($this->load($data)&&$this->validate()){
+            $filed = ['adminpass'=>md5($this->adminpass)];
+            $where = ['username'=>$this->username];
+            return (bool)$this->updateAll($filed,$where) ;
+        }
+        return false;
+    }
+
+    /**
+     * 生成token
+     * @param $username
+     * @param $time
+     * @return string
+     */
+    public function createToken($username,$time){
+        return md5(md5($username).base64_encode(Yii::$app->request->userIP.md5($time)));
+    }
 }
