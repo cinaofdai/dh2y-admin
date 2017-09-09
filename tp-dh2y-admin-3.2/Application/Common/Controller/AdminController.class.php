@@ -32,6 +32,9 @@ class AdminController extends BaseController
         $this->assign('menuBar',$menu->buildMenu($menuList));
 
         if(!Rbac::AccessDecision()){
+            if(IS_AJAX){
+                $this->ajaxReturn(['status'=>false,'message'=>'对不起您没有权限']);
+            }
             $this->error('您没有权限');
         }
     }
@@ -47,11 +50,12 @@ class AdminController extends BaseController
      * 万能搜索
      * @param Model $model 模型
      * @param bool $page 分页数-默认不分页
+     * @param array $cond 附加条件
      * @param string $desc 排序方式-默认倒叙
      * @param string $order 排序字段 'id,time'
      * @return mixed 排序结果集
      */
-    protected function search(Model $model,$page = false,$desc='desc',$order='id'){
+    protected function search(Model $model,$page = false,$cond=[],$desc='desc',$order='id'){
         $map = [];
         $query = I('get.query');
         $this->assign('query',$query);
@@ -69,10 +73,20 @@ class AdminController extends BaseController
                             $map[$key] = array('eq',$value);
                         }
                     }else{
-                        $map[$key]  = array('like','%'.$value.'%');
+                        $time = explode(' - ',$value);
+                        if(is_array($time)&&count($time)==2){ //如果是时间
+                            $map[$key] = ['between',[strtotime($time[0]),strtotime($time[1])]];
+                        }else{
+                            $map[$key]  = array('like','%'.$value.'%');
+                        }
                     }
                 }
             }
+        }
+
+        //附加条件
+        if(isset($cond)&&is_array($cond)){
+            $map = array_merge($map,$cond);
         }
 
         //如果分页
