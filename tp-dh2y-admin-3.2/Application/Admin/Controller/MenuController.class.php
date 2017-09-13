@@ -67,6 +67,13 @@ class MenuController extends AdminController
         $data = I('post.ids');
         if(IS_AJAX && is_array($data)){
             $map['id'] = ['in',$data];
+			
+			$cond['pid'] = ['in',$data];
+            $child = M('menu')->where($cond)->select();
+            if($child){
+                $this->ajaxReturn(['status'=>false,'message'=>'存在子菜单不能删除']);
+            }
+			
             $result = M('menu')->where($map)->delete();
             if($result){
 
