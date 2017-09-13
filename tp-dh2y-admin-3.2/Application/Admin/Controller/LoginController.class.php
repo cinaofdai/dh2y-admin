@@ -64,6 +64,7 @@ class LoginController extends Controller
      */
     public function logout(){
         session(C("USER_AUTH_KEY"), null);
+        session('MENU_LIST',null);
         session("username", null);
         session(null);
         $this->redirect('index');

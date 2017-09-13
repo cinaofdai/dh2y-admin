@@ -23,7 +23,7 @@ class AdminModel extends BaseModel
         ['username','',['tag'=>'username','error'=>'帐号名称已经存在！'],0,'unique'],
         ['role_id','require',['tag'=>'role_id','error'=>'请选择角色！']],
         ['status',[0,1],['tag'=>'status','error'=>'状态不合法！'],2,'in'],
-        ['email','email',['tag'=>'email','error'=>'邮箱不合法！']],
+        ['email','email',['tag'=>'email','error'=>'邮箱不合法！'],2],
         ['password','require',['tag'=>'password','error'=>'密码不能为空！'],],
         ['password','checkPsw',['tag'=>'password','error'=>'请输入6~16位有效字符'],2,'callback',3],
     );

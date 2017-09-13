@@ -42,7 +42,7 @@ class MenuModel extends BaseModel
      * 菜单列表
      */
     public function lists(){
-        $data = $this->select();
+        $data = $this->order('sort')->select();
         return Data::tree($data,'title', $fieldPri = 'id');
     }
 
@@ -59,7 +59,7 @@ class MenuModel extends BaseModel
         }
 
         //读取菜单
-        $menu = $this->select();
+        $menu = $this->order('sort')->select();
 
         //如果不是超级管理员返回权限菜单
         if(session('username')!= C('RBAC_SUPERADMIN')){
