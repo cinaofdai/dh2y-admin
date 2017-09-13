@@ -39,7 +39,7 @@ class MenuController extends AdminController
             }
             $this->ajaxReturn(false);
         }
-        $this->assign('menu',$model->lists());
+        $this->assign('menu',$model->lists($id));
         $this->assign('show_id',$id);
         $this->display();
     }

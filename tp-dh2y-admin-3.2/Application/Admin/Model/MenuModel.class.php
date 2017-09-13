@@ -41,9 +41,25 @@ class MenuModel extends BaseModel
     /**
      * 菜单列表
      */
-    public function lists(){
-        $data = $this->order('sort')->select();
+    public function lists($id){
+        //如果存在id 不查询他的子id
+        if($id){
+            $ids = $this->child_id($id);
+            $ids[] = $id;
+            $cond['id'] = ['not in',$ids];
+        }
+        $data = $this->where($cond)->order('sort')->select();
         return Data::tree($data,'title', $fieldPri = 'id');
+    }
+
+
+    /**
+     * 获取子栏目id
+     */
+    public function child_id($id){
+        $cond['pid'] = $id;
+        $ids = $this->where($cond)->select();
+        return array_column($ids,'id');
     }
 
 
