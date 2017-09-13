@@ -30,7 +30,7 @@ return array(
     'RBAC_SUPERADMIN' => 'admin',      //超级管理员用户名称(自己添加的)
 
     'REQUIRE_AUTH_MODULE' => '',  //默认需要认证的模块
-    'NOT_AUTH_MODULE' => 'Login', // 无需认证模块
+    'NOT_AUTH_MODULE' => 'Login,Ueditor', // 无需认证模块
     'USER_AUTH_GATEWAY' => '/Login/index', // 默认网关
 
     "USER_AUTH_MODEL" => 'dh2y_admin',               //验证用户表模型 ly_user

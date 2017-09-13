@@ -10,8 +10,9 @@ namespace Admin\Controller;
 
 
 use Common\Org\Uploader;
+use Common\Controller\AdminController;
 
-class UeditorController extends CommonController
+class UeditorController extends AdminController
 {
     protected $CONFIG;
 
