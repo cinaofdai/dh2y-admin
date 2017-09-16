@@ -116,7 +116,7 @@
 															<input type="text" v-model="model.verify" class="form-control" placeholder="验证码" />
 															<i class="icon-key"></i>
 														</span>
-                                                       <img src="{:U('Login/verify')}" onClick="this.src=this.src+'?'+Math.random()">
+                                                       <img class="verifyNew" src="{:U('Login/verify')}" onClick="verifyNew()">
                                             </label>
 
                                             <div class="space"></div>
@@ -184,6 +184,16 @@
            }
        })
    })
+
+   //刷新验证码
+   function verifyNew() {
+       var src = $('.verifyNew').attr('src');
+       if(src.indexOf("?")!=-1) {
+           $('.verifyNew').attr('src',src+'&random'+Math.random());
+       } else{
+           $('.verifyNew').attr('src',src+'?'+Math.random());
+       }
+   }
 
 </script>
 </body>
