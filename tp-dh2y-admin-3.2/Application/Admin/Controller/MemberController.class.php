@@ -36,6 +36,20 @@ class MemberController extends AdminController
     }
 
     /**
+     * 用户个人中心
+     */
+    public function center(){
+        if(IS_AJAX){
+            $data = I('post.');
+            $model = new AdminModel();
+            $this->ajaxReturn($res = $model->store($data));
+        }else{
+            $this->assign('show_id',session(C("USER_AUTH_KEY")));
+            $this->display();
+        }
+    }
+
+    /**
      * @title 查看用户
      * 查看编辑数据及渲染添加页面
      */
